@@ -1,0 +1,41 @@
+<div class="container mt-5">
+  <div class="row">
+    <!-- ngFor para iterar sobre las conferencias -->
+    <div class="col-md-4" *ngFor="let conferencia of listConferencia">
+      <div class="card">
+        <!-- Suponiendo que fotoConferencista es una URL de imagen -->
+        <img
+          src="{{ conferencia.fotoConferencista }}"
+          class="img-fluid"
+          style="max-height: 100px; max-width: 100%; object-fit: contain"
+          alt="Foto del conferencista"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ conferencia.nombreConferencia }}</h5>
+          <p class="card-text">
+            <strong>Conferencista:</strong> {{ conferencia.nombreConferencista
+            }}<br />
+            <strong>Experiencia laboral del conferencista:</strong>
+            {{ conferencia.experienciaConferencista }}<br />
+            <strong>Fecha:</strong>
+            {{ conferencia.fechaConferencia | date: "mediumDate" }}<br />
+            <strong>Lugar:</strong> {{ conferencia.lugarConferencia }}<br />
+          </p>
+          <p *ngIf="conferencia.cupoConferencia > 0">
+            <strong>Cupo:</strong> {{ conferencia.cupoConferencia }}
+          </p>
+          <p *ngIf="conferencia.cupoConferencia == 0" style="color: red">
+            Cupo completo
+          </p>
+          <button
+            *ngIf="conferencia.cupoConferencia > 0"
+            (click)="seleccionarConferencia(conferencia._id)"
+            class="btn btn-primary"
+          >
+            Registrarse
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
