@@ -1,6 +1,8 @@
 export class Registro {
   _id?: Number;
   nombre: string;
+  apellidoPaterno: string;
+  apellidoMaterno: string;
   correoElectronico: string;
   telefono: number;
   areaTrabajo: string;
@@ -10,6 +12,8 @@ export class Registro {
 
   constructor(
     nombre: string,
+    apellidoPaterno: string,
+    apellidoMaterno: string,
     correoElectronico: string,
     telefono: number,
     areaTrabajo: string,
@@ -18,6 +22,8 @@ export class Registro {
     fechaRegistro?: Date,
   ) {
     this.nombre = nombre;
+    this.apellidoPaterno = apellidoPaterno;
+    this.apellidoMaterno = apellidoMaterno;
     this.correoElectronico = correoElectronico;
     this.telefono = telefono;
     this.areaTrabajo = areaTrabajo;

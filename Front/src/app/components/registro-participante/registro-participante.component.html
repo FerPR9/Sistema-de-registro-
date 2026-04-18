@@ -9,20 +9,13 @@
             [formGroup]="registroForm"
             (ngSubmit)="registrarParticipante()"
           >
-            <!-- Añadir un campo oculto en tu formulario de registro -->
-            <input
-              type="hidden"
-              formControlName="conferenciaId"
-              value="{{ conferenciaSeleccionadaId }}"
-            />
-
-            <label for="nombre" class="left-align">Nombre Completo:</label>
+            <label for="nombre" class="left-align">Nombre</label>
             <input
               type="text"
               formControlName="nombre"
               id="nombre"
               name="nombre"
-              placeholder="Nombre Completo"
+              placeholder="Nombre"
             />
 
             <div
@@ -187,7 +180,7 @@
                 class="right-button"
                 routerLink="/lista-taller"
               >
-                Otra taller
+                Otro taller
               </button>
             </div>
           </form>

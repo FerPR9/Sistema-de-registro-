@@ -21,11 +21,13 @@
             <tbody>
               <!-- ngFor directive for dynamic data -->
               <tr *ngFor="let registro of listRegistro">
-                <td class="text-truncate">{{ registro.nombre }}</td>
+                <td class="text-truncate">
+                  {{ registro.nombre }} {{ registro.apellidoPaterno }}
+                  {{ registro.apellidoMaterno }}
+                </td>
                 <td class="text-truncate">{{ registro.correoElectronico }}</td>
                 <td class="text-truncate">{{ registro.telefono }}</td>
                 <td class="text-truncate">{{ registro.areaTrabajo }}</td>
-                <td class="text-truncate">{{ registro.folio }}</td>
                 <td>
                   <!-- Inline styles to control the image size and fit -->
                   <img
@@ -39,7 +41,8 @@
                     alt="Foto del participante"
                   />
                 </td>
-                <td>{{ registro.fechaRegistro | date: "mediumDate" }}</td>
+                <td>{{ registro.fechaRegistro | date: "dd/MM/yyyy HH:mm" }}</td>
+                <td class="text-truncate">{{ registro.folio }}</td>
               </tr>
             </tbody>
           </table>
