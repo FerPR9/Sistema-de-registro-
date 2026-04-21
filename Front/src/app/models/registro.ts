@@ -9,6 +9,8 @@ export class Registro {
   folio?: string;
   fechaRegistro?: Date;
   foto: any;
+  conferenciaId?: string;
+  tallerId?: string;
 
   constructor(
     nombre: string,

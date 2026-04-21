@@ -36,6 +36,16 @@ const RegistroEsquema = new mongoose.Schema({
   folio: {
     type: String,
   },
+  conferenciaId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Conferencia",
+    default: null,
+  },
+  tallerId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Taller",
+    default: null,
+  },
   fechaRegistro: {
     type: Date,
     default: Date.now,

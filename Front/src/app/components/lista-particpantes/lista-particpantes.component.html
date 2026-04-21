@@ -16,6 +16,7 @@
                 <th scope="col" class="col-2">Foto del participante</th>
                 <th scope="col" class="col-2">Fecha de registro</th>
                 <th scope="col" class="col-2">Folio</th>
+                <th scope="col" class="col-2">Evento</th>
               </tr>
             </thead>
             <tbody>
@@ -43,6 +44,7 @@
                 </td>
                 <td>{{ registro.fechaRegistro | date: "dd/MM/yyyy HH:mm" }}</td>
                 <td class="text-truncate">{{ registro.folio }}</td>
+                <td>{{ getTipoEvento(registro) }}</td>
               </tr>
             </tbody>
           </table>
