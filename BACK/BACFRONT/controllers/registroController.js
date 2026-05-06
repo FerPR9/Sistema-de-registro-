@@ -6,6 +6,25 @@ const { enviarCorreoRegistro } = require("../services/emailService");
 exports.crearRegistro = async (req, res) => {
   console.log("Datos recibidos:", req.body);
   try {
+    // Validar evento
+    if (!req.body.conferenciaId && !req.body.tallerId) {
+      return res.status(400).json({ msg: "Solo puedes seleccionar un evento" });
+      return res.status(400).json({ msg: "Debe seleccionar un evento" });
+    }
+    // 🔥 VALIDAR DUPLICADO
+    const existe = await Registro.findOne({
+      correoElectronico: req.body.correoElectronico,
+      $or: [
+        { conferenciaId: req.body.conferenciaId },
+        { tallerId: req.body.tallerId },
+      ],
+    });
+
+    if (existe) {
+      return res
+        .status(400)
+        .json({ msg: "Ya estás registrado en este evento" });
+    }
     // Actualizar el cupo de la conferencia o taller
     if (req.body.conferenciaId) {
       const conferencia = await Conferencia.findById(req.body.conferenciaId);
@@ -60,6 +79,8 @@ exports.crearRegistro = async (req, res) => {
         });
         infoEvento = `
         Conferencia: ${conferencia.nombreConferencia}
+        Conferencista: ${conferencia.nombreConferencista}
+        Experiencia: ${conferencia.experienciaConferencista}
         Fecha: ${fechaFormateada}
         Lugar: ${conferencia.lugarConferencia}
         `;
@@ -82,6 +103,8 @@ exports.crearRegistro = async (req, res) => {
         );
         infoEvento = `
         Taller: ${taller.nombreTaller}
+        NombreResponsable: ${taller.nombreResponsable}
+        Experiencia: ${taller.experienciaResponsableTaller}
         Fecha: ${fechaFormateada}
         Lugar: ${taller.lugarTaller}
         `;

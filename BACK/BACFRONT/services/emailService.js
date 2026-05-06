@@ -3,15 +3,16 @@ const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "mafe00985@gmail.com",
-    pass: "liwn qbub mmrl qvua",
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
 const enviarCorreoRegistro = async (registro, infoEvento) => {
   try {
     await transporter.sendMail({
-      from: '"Eventos Tech" <mafe00985@gmail.com>',
+      //from: '"Registro participante" <mafe00985@gmail.com>',
+      from: `"Registro participante" <${process.env.EMAIL_USER}>`,
       to: registro.correoElectronico,
       subject: "Confirmación de registro",
       text: `

@@ -20,9 +20,10 @@ const RegistroEsquema = new mongoose.Schema({
   correoElectronico: {
     type: String,
     required: true,
+    match: [/^\S+@\S+\.\S+$/, "Correo inválido"],
   },
   telefono: {
-    type: Number,
+    type: String,
     required: true,
   },
   areaTrabajo: {

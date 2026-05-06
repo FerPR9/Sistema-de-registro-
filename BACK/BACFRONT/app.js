@@ -6,10 +6,11 @@ var registroRouter = require("./routes/registro");
 var tallerRouter = require("./routes/taller");
 var conferenciaRouter = require("./routes/conferencia");
 var path = require("path");
+require("dotenv").config();
 
 var app = express();
-const dotenv = require("dotenv");
-dotenv.config();
+//const dotenv = require("dotenv");
+//dotenv.config();
 const mongo = require("./config/dbconfig");
 
 app.set("views", path.join(__dirname, "views"));
